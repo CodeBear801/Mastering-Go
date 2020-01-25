@@ -8,6 +8,12 @@ import (
 	"time"
 )
 
+// [Perry] If input time > 5s
+// result will be 
+// Timed out!
+// OK!
+// Because return false need w.Done()
+
 func timeout(w *sync.WaitGroup, t time.Duration) bool {
 	temp := make(chan int)
 	go func() {
