@@ -13,9 +13,11 @@ func add(c chan int) {
 	for {
 		select {
 		case input := <-c:
+			//fmt.Printf("+++ %d\n", input)
 			sum = sum + input
 		case <-t.C:
 			c = nil
+			//close(c)
 			fmt.Println(sum)
 		}
 	}
@@ -33,4 +35,5 @@ func main() {
 	go send(c)
 
 	time.Sleep(3 * time.Second)
+	fmt.Printf("After sleep")
 }
